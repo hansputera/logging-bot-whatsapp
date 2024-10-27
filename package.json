@@ -1,18 +1,20 @@
 {
-  "name": "project-name-here",
+  "name": "logging-whatsapp-bot",
   "version": "0.0.1",
-  "description": "project description here",
+  "description": "A self bot on WhatsApp to logging all activity such as reveal the view once photos/videos, recover deleted message, etc...",
   "main": "./dist/index.js",
   "scripts": {
     "prepare": "node preinstall.js --max-old-space-size=10M",
     "lint": "biome lint --write ./src",
     "format": "biome format --write ./src",
     "build": "tsup",
-    "hook": "node hook.js --max-old-space-size=50M"
+    "hook": "node hook.js --max-old-space-size=50M",
+    "start": "dotenvx run -- ./dist/index.js"
   },
-  "type": "module",
+  "type": "commonjs",
   "keywords": [
-    "project keywords"
+    "whatsapp-bot",
+    "whatsapp"
   ],
   "author": {
     "name": "Hanif Dwy Putra S",
@@ -21,12 +23,27 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
-    "@swc/core": "^1.7.23",
-    "@types/node": "^20.16.5",
+    "@swc/core": "^1.7.40",
+    "@types/file-manager": "^2.0.3",
+    "@types/node": "^20.17.1",
     "husky": "^8.0.3",
     "is-ci": "^3.0.1",
     "is-git-dirty": "^2.0.2",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4"
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.21.0",
+    "@hono/node-server": "^1.13.2",
+    "@libsql/client": "^0.14.0",
+    "@prisma/adapter-libsql": "^5.21.1",
+    "@prisma/client": "^5.21.1",
+    "avvio": "^9.1.0",
+    "file-manager": "^2.0.1",
+    "gampang": "^2.3.5",
+    "hono": "^4.6.7",
+    "rimraf": "^6.0.1",
+    "winston": "^3.15.0",
+    "winston-transport-sentry-node": "^3.0.0"
   }
 }

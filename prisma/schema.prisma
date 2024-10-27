@@ -1,0 +1,56 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Recovery message table
+model RecoveryMessage {
+    id Int @id @default(autoincrement())
+
+    // The user who sent the message
+    sender String @map("sender_id")
+
+    // JID
+    jid String @map("chat_id")
+
+    // The message
+    message String
+
+    // Old message
+    oldMessage String? @map("old_message")
+
+    // Condition of the message
+    isDeleted Boolean @default(false) @map("is_deleted")
+
+    // Timestamp
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    @@map("recovery_messages")
+}
+
+model PhotoOrVideoMessage {
+    id Int @id @default(autoincrement())
+
+    // The user who sent the message
+    sender String @map("sender_id")
+
+    // JID
+    jid String @map("chat_id")
+
+    // The caption
+    caption String?
+
+    // The media url
+    mediaUrl String @map("media_url")
+
+    // The media type
+    mediaType String @map("media_type")
+
+    @@map("media_messages")
+}

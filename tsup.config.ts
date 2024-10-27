@@ -10,5 +10,5 @@ export default defineConfig({
   platform: 'node',
   dts: false,
   tsconfig: './tsconfig.json',
-  format: 'esm',
+  format: 'cjs',
 });
